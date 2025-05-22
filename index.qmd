@@ -47,9 +47,6 @@ source("R/functions.R")
 
 # LOAD LIBRARIES
 
-# Custom package
-# library()
-
 # Tidyverse
 library(tidyverse)         # Core data science packages for data manipulation, visualization, and piping
 library(tidymodels)        # Framework for modeling and machine learning using the tidyverse philosophy
