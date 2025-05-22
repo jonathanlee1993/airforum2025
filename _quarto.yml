@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Flexing Data:  How Campus Gym Engagement Boosts Student Performance"
+  title: "Flexing Data: How Campus Gym Engagement Boosts Student Performance"
   navbar: 
     left:
       - href: index.qmd
