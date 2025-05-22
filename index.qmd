@@ -41,10 +41,9 @@ init_jlee1_env_keyring()
 #     "tidyverse", "ggplot", "plotly", "DT", "shiny", "shinyWidgets", "shinyjs"
 #   )
 # )
-# 
-# Install my custom package from GitHub
-# This will give you access to a few custom functions I wrote for this analysis
-# devtools::install_github("")
+
+# LOAD CUSTOM SCRIPTS
+source("R/functions.R")
 
 # LOAD LIBRARIES
 
@@ -507,7 +506,7 @@ student_data_tbl <- student_data_tbl %>%
   
   mutate(
     
-    CONFUSION_MATRIX       = map(PREDICT_MODEL, uwfir::models_logistic_create_confusion_matrix),
+    CONFUSION_MATRIX       = map(PREDICT_MODEL, models_logistic_create_confusion_matrix),
     CONFUSION_MATRIX_TABLE = map(
       CONFUSION_MATRIX, 
       ~.x$metrics %>% 
@@ -521,7 +520,7 @@ student_data_tbl <- student_data_tbl %>%
     TIDY_FIT_MODEL     = map(FIT_MODEL, broom::tidy),
     SUMMARY_DATATABLE  = map(
       FIT_MODEL, 
-      ~uwfir::models_logistic_create_summary_datatable(
+      ~models_logistic_create_summary_datatable(
         .x, round = 3
       )
     ),
@@ -652,7 +651,7 @@ tuning_eval_obj <- tune_obj %>%
     ),
     BEST_OF_METRICS_TABLE = map(
       BEST_OF_METRICS, 
-      ~uwfir::models_general_create_datatable(
+      ~models_general_create_datatable(
         .x, "Best Tuning Parameters", round = 5, `Under Ratio` = "under_ratio", Metric = ".metric", Config = ".config"
       )
     ) ,
@@ -688,7 +687,7 @@ tuning_eval_obj <- tune_obj %>%
     ),
     BEST_OF_METRICS_PLOTLY = map(BEST_OF_METRICS_PLOT, ~ggplotly(.x, tooltip = ".tooltip")),
     TUNING_METRICS         = map(
-      TUNING_METRICS, ~uwfir::models_general_create_datatable(
+      TUNING_METRICS, ~models_general_create_datatable(
         .x, "All Tuning Parameters", round = 5
       )
     )
