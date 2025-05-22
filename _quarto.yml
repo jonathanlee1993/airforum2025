@@ -1,0 +1,15 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Flexing Data:  How Campus Gym Engagement Boosts Student Performance"
+  navbar: 
+    left:
+      - href: index.qmd
+        text: Home
+
+format:
+  html:
+    theme: default
+    toc: true
